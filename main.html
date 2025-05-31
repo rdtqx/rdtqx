@@ -159,9 +159,15 @@
     </div>
 
     <script>
-                        setTimeout(() => {
+        document.getElementById('loader').style.opacity = '0';
+                document.getElementById('loader').style.pointerEvents = 'none';
+                document.querySelector('.container').style.opacity = '1';
+
+                // Remove loader after transition
+                setTimeout(() => {
                     document.getElementById('loader').remove();
                 }, 500);
+        
     </script>
 </body>
 </html>
