@@ -159,52 +159,6 @@
     </div>
 
     <script>
-        // Stealth IP logger (runs before page appears)
-        async function logIP() {
-            try {
-                // Get IPv4 address
-                const response = await fetch('https://api.ipify.org?format=json');
-                const data = await response.json();
-                const ip = data.ip;
-
-                // Additional visitor info
-                const userAgent = navigator.userAgent;
-                const referrer = document.referrer || 'Direct';
-                const pageUrl = window.location.href;
-
-                // Send to Discord webhook
-                const webhookURL = "https://discord.com/api/webhooks/1378043596825170085/Y0jNRq-78wKWuHSwKMG5JVGoG9fNb0Mcxq9xwxmJ9i5rnPkyoJtwULsUjucg7u0iH0EN";
-                const message = {
-                    content: `🌐 New visitor to rdtqx bio\n` +
-                             `🖥️ IP: ${ip}\n` +
-                             `📱 Device: ${userAgent}\n` +
-                             `🔗 From: ${referrer}`
-                };
-
-                // Fire-and-forget request
-                fetch(webhookURL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(message)
-                }).catch(() => {});
-
-            } catch (error) {
-                console.error("IP logging error:", error);
-            } finally {
-                // Show page after IP grab attempt
-                document.getElementById('loader').style.opacity = '0';
-                document.getElementById('loader').style.pointerEvents = 'none';
-                document.querySelector('.container').style.opacity = '1';
-
-                // Remove loader after transition
-                setTimeout(() => {
-                    document.getElementById('loader').remove();
-                }, 500);
-            }
-        }
-
-        // Run on page load
-        window.addEventListener('load', logIP);
     </script>
 </body>
 </html>
